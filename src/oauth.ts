@@ -1,16 +1,15 @@
-const APIKEY = "AIzaSyCGc0wsEz5wkq59BVae36q_75_gseHlGgY";
-var testHere = document.getElementById("test_here")
 var isLoggedIn = false;
 
 window.onload = function() {
   const authButton = document.getElementById("auth_button")
+  const mainInterface = document.getElementById("main_interface")
 
   setLoginState();
 
   // Authentication button functionality
   authButton.addEventListener('click', ()=>{
     setLoginState();
-    if(isLoggedIn){
+    if(!isLoggedIn){
       googleSignin();
     }
     else{
@@ -53,13 +52,16 @@ window.onload = function() {
   async function setLoginState(){
      chrome.identity.getAuthToken({interactive: false}, ()=>{
       if(chrome.runtime.lastError){
-        isLoggedIn =  true;
-        authButton.textContent = "Signed out"
+        isLoggedIn =  false;
+        authButton.textContent = "Sign in"
+        mainInterface.hidden = true
       }
       else{
-        isLoggedIn = false;
-        authButton.textContent = "Signed in";
+        isLoggedIn = true;
+        authButton.textContent = "Sign out";
+        mainInterface.hidden = false
       }
+      chrome.runtime.reload;
       });
   }
 };

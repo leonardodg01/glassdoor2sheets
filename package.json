@@ -22,7 +22,7 @@
   "devDependencies": {
     "@types/gapi.client.sheets": "^4.0.20201031",
     "@types/gapi.client.sheets-v4": "^0.0.4",
-    "@types/node": "^20.11.5",
+    "@types/node": "^20.11.7",
     "typescript": "^5.3.3"
   }
 }
