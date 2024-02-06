@@ -1,22 +1,5 @@
-var isLoggedIn = false;
+console.log("oauth.ts running")
 
-window.onload = function() {
-  const authButton = document.getElementById("auth_button")
-  const mainInterface = document.getElementById("main_interface")
-
-  setLoginState();
-
-  // Authentication button functionality
-  authButton.addEventListener('click', ()=>{
-    setLoginState();
-    if(!isLoggedIn){
-      googleSignin();
-    }
-    else{
-      googleSignout();
-    }
-    setLoginState();
-  });
 
   // Signin button authentication
   function googleSignin(){
@@ -32,7 +15,6 @@ window.onload = function() {
       };  
     });
   }
-
   // Signout authentication
   function googleSignout(){
     var options = {
@@ -47,24 +29,3 @@ window.onload = function() {
     }
     chrome.identity.launchWebAuthFlow(options, function(redirectUri) {});
   }
-
-  // Checks if user is logged in and sets button to correct text
-  async function setLoginState(){
-     chrome.identity.getAuthToken({interactive: false}, ()=>{
-      if(chrome.runtime.lastError){
-        isLoggedIn =  false;
-        authButton.textContent = "Sign in"
-        mainInterface.hidden = true
-      }
-      else{
-        isLoggedIn = true;
-        authButton.textContent = "Sign out";
-        mainInterface.hidden = false
-      }
-      chrome.runtime.reload;
-      });
-  }
-};
-
-
-

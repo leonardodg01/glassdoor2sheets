@@ -1,13 +1,16 @@
 {
     "compilerOptions": {
-      "module": "NodeNext",
-      "moduleResolution": "NodeNext",
-      "target": "ES2020",
-      "sourceMap": true,
-      "outDir": "dist",
-      "types": ["gapi", "gapi.auth2", "gapi.client.sheets-v4", "chrome", "node"],
-      "resolveJsonModule": true,
+      "strict": false,
+      "target": "es6",
+      "moduleResolution": "bundler",
+      "module": "ES6",
       "esModuleInterop": true,
+      "sourceMap": false,
+      "rootDir": "src",
+      "outDir": "dist",
+      "noEmitOnError": true,
+      "typeRoots": ["node_modules/@types"],
+      "types": ["gapi", "gapi.auth2", "gapi.client.sheets-v4", "chrome", "node"],
     },
     "include": ["src/**/*"],
   }

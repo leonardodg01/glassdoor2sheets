@@ -1,14 +1,15 @@
 {
-  "name": "OAuth Tutorial FriendBlock",
+  "name": "Glassdoor2Sheets",
   "version": "1.0",
-  "description": "Uses OAuth to connect to Google's People API and display contacts photos.",
+  "description": "Google extension for moving job information from Glassdoor (and potentially other jobboards) to a Google Sheets doc.",
   "manifest_version": 3,
   "action": {
-    "default_title": "FriendBlock, friends face's in a block.",
-    "default_popup": "src/index.html"
+    "default_title": "Glassdoor2Sheets",
+    "default_popup": "dist/index.html"
   },
   "background": {
-    "service-worker": "dist/service-worker.js"
+    "service_worker": "./dist/service-worker.js",
+    "type": "module"
   },
   "oauth2": {
     "client_id": "531430626938-f93umk335vt69f83g852s5lnfsodnf3q.apps.googleusercontent.com",
