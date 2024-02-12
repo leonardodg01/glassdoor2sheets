@@ -1,4 +1,5 @@
 var isLoggedIn = false;
+var authToken;
 
 window.onload = ()=>{
     var sheetsApiObj = new sheetsApi;
@@ -8,23 +9,21 @@ window.onload = ()=>{
     const postButton = document.getElementById("post_button")
     const test = document.getElementById("test_here");
 
-    sheetsApiObj.getSecrets();
+    test.addEventListener('click', ()=>{
+      sheetsApiObj.setSheetLocation("test", "test")
+    });
 
     postButton.addEventListener('click', ()=>{
       sheetsApiObj.postData();
     });
 
-    console.log("index test")
-    test.textContent = "popoo"
-
-    // --Authentication--
     setLoginState();    
     
     // Authentication button functionality
     authButton.addEventListener('click', ()=>{
       setLoginState();
       if(!isLoggedIn){
-        googleSignin();
+        getSigninToken();
       }
       else{
         googleSignout();
