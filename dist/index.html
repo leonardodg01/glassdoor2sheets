@@ -4,30 +4,29 @@
     <style>
       button {
         padding: 10px;
-        background-color: #3C79F8;
+        background-color: #8FBC8F;
         display: inline-block;
       }
     </style>
     
   </head>
   <body>
-    <script src="https://accounts.google.com/gsi/client" async defer></script>
-    <div id="g_id_onload"
-         data-client_id="Y531430626938-f93umk335vt69f83g852s5lnfsodnf3q.apps.googleusercontent.com"
-         data-callback="handleCredentialResponse">
-    </div>
-    <div class="g_id_signin" data-type="standard"></div>
-
     <button id="auth_button">You should not see this</button>
     <button id="test_here">test</button>
     
     <!--User interface for getting and sending data-->
     <div id="main_interface">
-      <button id="post_button">Send to Spreasheet</button>
+      <hr>
+      spreadsheet ID: <input type="text" id="spreadsheetID" value=""><br>
+      sheet ID: <input type="text" id="sheetID" value=""><br>
+      <button id="save_button">Save Settings</button><br>
+
+      <button id="post_button">Send to Spreasheet</button><br>
     </div>
 
     <script src="index.js"></script>
     <script src="oauth.js"></script>
     <script src="sheetsapi.js"></script>
+    <script src="https://apis.google.com/js/api.js"></script>
   </body>
 </html>

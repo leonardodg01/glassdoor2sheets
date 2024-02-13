@@ -8,11 +8,16 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 class sheetsApi {
-    setSheetLocation(sheetID, sheetName) {
+    setSheetLocation(spreadsheetID, sheetID) {
         return __awaiter(this, void 0, void 0, function* () {
-            chrome.storage.local.set({ 'sheetID': sheetID, 'sheetName': sheetName }, () => {
+            chrome.storage.local.set({ 'spreadsheetID': spreadsheetID, 'sheetID': sheetID }, () => {
                 console.log('Saved sheet location data');
             });
+        });
+    }
+    getSpreadsheetID() {
+        return __awaiter(this, void 0, void 0, function* () {
+            return yield chrome.storage.local.get(['spreadsheetID']);
         });
     }
     getSheetID() {
@@ -20,24 +25,24 @@ class sheetsApi {
             return yield chrome.storage.local.get(['sheetID']);
         });
     }
-    getSheetName() {
+    getAuthToken() {
         return __awaiter(this, void 0, void 0, function* () {
-            return yield chrome.storage.local.get(['sheetName']);
+            return yield chrome.storage.local.get(['token']);
         });
     }
     //POST data to specified spreadsheet
     postData() {
         return __awaiter(this, void 0, void 0, function* () {
-            console.log(this.secrets);
             let response = yield fetch("https://sheets.googleapis.com/v4/spreadsheets/" +
-                (yield this.getSheetID().then((result) => { return result.sheetID; })) + "/values/" +
-                (yield this.getSheetName().then((result) => { return result.sheetName; })) + "!A1:A1:append?valueInputOption=USER_ENTERED", {
+                (yield this.getSpreadsheetID().then((result) => { return result.spreadsheetID; })) + "/values/" +
+                (yield this.getSheetID().then((result) => { return result.sheetID; })) + "!A1:A1:append?valueInputOption=USER_ENTERED", {
                 method: "POST",
                 body: JSON.stringify({
                     majorDimension: "ROWS",
                     values: [["Jobname", "jobjob", "woah"]]
                 }),
                 headers: {
+                    Authorization: 'Bearer ' + (yield this.getAuthToken().then((result) => { return result.token; })),
                     "Content-type": "application/json",
                     "Connection": "keep-alive",
                     "Accept": "*/*",

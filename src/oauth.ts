@@ -2,7 +2,7 @@ console.log("oauth.ts running")
 
   // Signin button authentication
   async function getSigninToken(){
-    return await chrome.identity.getAuthToken({interactive: true}, function(token) {
+    let token = await chrome.identity.getAuthToken({interactive: true}, function(token) {
       let init = {
         method: 'GET',
         async: true,
@@ -12,8 +12,12 @@ console.log("oauth.ts running")
         },
         'contentType': 'json'
       };  
+      chrome.storage.local.set({'token': token}, ()=> {
+        console.log('Saved auth token ' + token);
+      });
     })
   }
+
 
   // Signout authentication
   function googleSignout(){

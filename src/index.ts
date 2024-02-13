@@ -4,13 +4,17 @@ var authToken;
 window.onload = ()=>{
     var sheetsApiObj = new sheetsApi;
   
-    const authButton = document.getElementById("auth_button")
-    const mainInterface = document.getElementById("main_interface")
-    const postButton = document.getElementById("post_button")
+    const authButton = document.getElementById("auth_button");
+    const mainInterface = document.getElementById("main_interface");
+    const postButton = document.getElementById("post_button");
+    const saveButton = document.getElementById("save_button");
     const test = document.getElementById("test_here");
 
-    test.addEventListener('click', ()=>{
-      sheetsApiObj.setSheetLocation("test", "test")
+    //Save inputted spreadsheet settings to local storage
+    saveButton.addEventListener('click', ()=>{
+      let spreadsheetID = (<HTMLInputElement>document.getElementById('spreadsheetID')).value;
+      let sheetID = (<HTMLInputElement>document.getElementById('sheetID')).value;
+      sheetsApiObj.setSheetLocation(spreadsheetID, sheetID);
     });
 
     postButton.addEventListener('click', ()=>{

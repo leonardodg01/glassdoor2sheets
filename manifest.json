@@ -17,7 +17,8 @@
   },
   "permissions": [
     "identity",
-    "storage"
+    "storage",
+    "https://sheets.googleapis.com/*"
   ],
   "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAtR9gPodIbWe7cPpQtvP7dg92MOwl2tCZLzrAgk0OJpHRniEsE6MEYyG+S/pRnPSxG+e+sc82iSmC28+9NjPTPe4/N3UIQw1MWFUgFf5cZlspQTFIucHgtU2yMyFIse6RSYEOMlolAAkdOJXEllIGLnRT18TurrYJ+FI3chiZXRjtEFyB48aiNYKn3HQJR6bWFlFCmyPM15pqd8tLVLAJNQaZDBhdrpH5wUMVsXt4Sy/CLhrI8vNGr4I/ENrhP+HHapiQ9f1Q2pGM3mY1tk0Ggpj0P/mDwuwUmGFFcORNFsYJ7xAIlqoitX5/KcCBBObUUmLm8EM+kYCtMCgCwQkwyQIDAQAB"
 }
